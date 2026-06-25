@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ella Dinagatha — Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:       #C9970A;
+      --gold-light: #F5D66B;
+      --gold-pale:  #FDF8E1;
+      --gold-warm:  #E8B828;
+      --ink:        #1A1612;
+      --ink-mid:    #4A3F2F;
+      --ink-soft:   #7A6A52;
+      --cream:      #FEFAF0;
+      --rule:       rgba(201,151,10,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--ink);
+      position: relative;
+      padding: 64px 32px 56px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 39px,
+          rgba(201,151,10,0.06) 39px,
+          rgba(201,151,10,0.06) 40px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 39px,
+          rgba(201,151,10,0.06) 39px,
+          rgba(201,151,10,0.06) 40px
+        );
+    }
+
+    .hero-accent {
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 360px; height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,151,10,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-accent-2 {
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,214,107,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .avatar-ring {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+
+    .avatar-ring::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid var(--gold-light);
+      opacity: 0.6;
+    }
+
+    .avatar-ring::after {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,151,10,0.25);
+    }
+
+    .avatar {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-warm) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+      opacity: 0.85;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .credentials {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 20px;
+    }
+
+    .hero-bio {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.7);
+      max-width: 480px;
+      margin: 0 auto 32px;
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border: 1px solid rgba(201,151,10,0.4);
+      border-radius: 100px;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      color: var(--gold-light);
+    }
+
+    .badge svg { flex-shrink: 0; }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      padding: 48px 0 0;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    .rule {
+      width: 100%;
+      height: 1px;
+      background: var(--rule);
+      margin-bottom: 28px;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: #fff;
+      border: 1px solid rgba(201,151,10,0.18);
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+
+    /* ── SOSMED ── */
+    .sosmed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .sosmed-card {
+      background: #fff;
+      border: 1px solid rgba(201,151,10,0.18);
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .sosmed-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 2px 16px rgba(201,151,10,0.1);
+    }
+
+    .sosmed-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--gold-pale);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .sosmed-icon svg { color: var(--gold); }
+
+    .sosmed-info { min-width: 0; }
+
+    .sosmed-platform {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 2px;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .sosmed-handle {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ── KONTAK ── */
+    .kontak-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .kontak-row:last-child { border-bottom: none; }
+
+    .kontak-icon {
+      width: 36px; height: 36px;
+      background: var(--gold-pale);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+
+    .kontak-label {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-family: 'DM Mono', monospace;
+      margin-bottom: 2px;
+    }
+
+    .kontak-value {
+      font-size: 14px;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .kontak-value a { color: var(--gold); text-decoration: none; }
+    .kontak-value a:hover { text-decoration: underline; }
+
+    /* ── PENDIDIKAN ── */
+    .edu-card {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .edu-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 6px;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 4px rgba(201,151,10,0.15);
+    }
+
+    .edu-degree {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .edu-institution {
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    /* ── KEAHLIAN ── */
+    .skill-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: var(--gold-pale);
+      border: 1px solid rgba(201,151,10,0.3);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-mid);
+    }
+
+    .skill-star {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 64px;
+      padding: 32px 24px;
+      border-top: 1px solid var(--rule);
+      text-align: center;
+    }
+
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+
+    .footer-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 520px) {
+      .hero { padding: 48px 20px 44px; }
+      .sosmed-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-accent"></div>
+  <div class="hero-accent-2"></div>
+
+  <div class="avatar-ring">
+    <div class="avatar">ED</div>
+  </div>
+
+  <p class="eyebrow">Profil Profesional</p>
+  <h1><em>Ella</em> Dinagatha</h1>
+  <p class="credentials">A.Md. &nbsp;·&nbsp; A.B.</p>
+  <div class="hero-divider"></div>
+  <p class="hero-bio">
+    Aparatur Sipil Negara di Kementerian Pertahanan Republik Indonesia,
+    sekaligus wirausahawan di bidang jasa desain &amp; percetakan kartu nama profesional.
+  </p>
+
+  <div class="badge-row">
+    <span class="badge">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+      PNS · Kemhan RI
+    </span>
+    <span class="badge">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      Master of Ceremony
+    </span>
+    <span class="badge">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      Desain Kartu Nama
+    </span>
+  </div>
+</section>
+
+<!-- ── MAIN ── -->
+<main>
+<div class="container">
+
+  <!-- SOSIAL MEDIA -->
+  <div class="section">
+    <p class="section-label">Temukan saya di</p>
+    <h2 class="section-title">Sosial Media</h2>
+    <div class="rule"></div>
+    <div class="sosmed-grid">
+
+      <a class="sosmed-card" href="https://instagram.com/J99_LLA" target="_blank">
+        <div class="sosmed-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div class="sosmed-info">
+          <p class="sosmed-platform">Instagram</p>
+          <p class="sosmed-handle">@J99_LLA</p>
+        </div>
+      </a>
+
+      <a class="sosmed-card" href="https://instagram.com/helloalteralla" target="_blank">
+        <div class="sosmed-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div class="sosmed-info">
+          <p class="sosmed-platform">Instagram · Bisnis</p>
+          <p class="sosmed-handle">@helloalteralla</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- KONTAK -->
+  <div class="section">
+    <p class="section-label">Hubungi saya</p>
+    <h2 class="section-title">Kontak</h2>
+    <div class="rule"></div>
+    <div class="card">
+      <div class="kontak-row">
+        <div class="kontak-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </div>
+        <div>
+          <p class="kontak-label">Email</p>
+          <p class="kontak-value"><a href="mailto:ella.multimedia2@gmail.com">ella.multimedia2@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="kontak-row">
+        <div class="kontak-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+        </div>
+        <div>
+          <p class="kontak-label">Instansi</p>
+          <p class="kontak-value">Kementerian Pertahanan Republik Indonesia</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PENDIDIKAN -->
+  <div class="section">
+    <p class="section-label">Latar belakang</p>
+    <h2 class="section-title">Pendidikan</h2>
+    <div class="rule"></div>
+    <div class="card">
+      <div class="edu-card">
+        <div class="edu-dot"></div>
+        <div>
+          <p class="edu-degree">Diploma III — Administrasi Bisnis</p>
+          <p class="edu-institution">Gelar: Ahli Madya (A.Md.) &nbsp;&amp;&nbsp; Associate of Business (A.B.)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEAHLIAN -->
+  <div class="section">
+    <p class="section-label">Yang saya kuasai</p>
+    <h2 class="section-title">Keahlian</h2>
+    <div class="rule"></div>
+    <div class="skill-wrap">
+      <span class="skill-pill"><span class="skill-star"></span>Master of Ceremony (MC)</span>
+      <span class="skill-pill"><span class="skill-star"></span>Desain Kartu Nama</span>
+      <span class="skill-pill"><span class="skill-star"></span>Administrasi Bisnis</span>
+      <span class="skill-pill"><span class="skill-star"></span>Public Speaking</span>
+      <span class="skill-pill"><span class="skill-star"></span>Wirausaha / Entrepreneurship</span>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <p class="footer-name">Ella Dinagatha, A.Md., A.B.</p>
+  <p class="footer-meta">© 2025 &nbsp;·&nbsp; All rights reserved</p>
+</footer>
+
+</body>
+</html>
